@@ -127,9 +127,10 @@ def Calibrate(squareLength,markerLength,CalibFiles,Processing) :
     image_size = tuple()
     message = []
     res = 0
-
-    for i, f in enumerate(CalibFiles):
-        pourcentage = round((i/len(CalibFiles))*100)
+    n = len(CalibFiles)
+    for i in range(n):
+        f = CalibFiles.pop()
+        pourcentage = round((i/n)*100)
         Processing.text(f'{pourcentage} % processessing ...')
         try :
             gray = cv2.cvtColor(np.array(Image.open(f)), cv2.COLOR_BGR2GRAY)
